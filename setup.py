@@ -8,16 +8,16 @@ with open(os.path.join(os.path.dirname(__file__), 'README.rst')) as readme:
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name='django-model-audit',
+    name='django-audittrail',
     version='0.1.6',
     packages=find_packages(),
     include_package_data=True,
     license='BSD License',
     description="""A simple Django app to manage history of models.""",
     long_description=README,
-    url='https://github.com/Dharmik8478/django-model-audit',
-    author='Dharmik Patel',
-    author_email='dharmik8478@gmail.com',
+    url='https://github.com/omiguelperez/django-audittrail',
+    author='Dharmik Patel, Oscar Pérez',
+    author_email='dharmik8478@gmail.com, mr.omiguelperez@gmail.com',
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',

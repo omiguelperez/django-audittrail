@@ -1,15 +1,17 @@
-===========
-Audit Trail
-===========
+==================
+Django Audit Trail
+==================
 
 Audit trail is a simple Django app to track the database changes and maintain history in any application. It also provide history for many_to_many fields, with ready admin page.
+
+With django 3 supports.
 
 
 Quick start
 -----------
 1. Install django-model-audit::
 
-       pip install django-model-audit
+       pip install django-audittrail
 
 2. Add "audit_trail" to your INSTALLED_APPS::
 
