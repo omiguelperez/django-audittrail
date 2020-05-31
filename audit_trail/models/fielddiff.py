@@ -18,30 +18,46 @@ class FieldDiff(models.Model):
     Id field of field diff, it is auto increment.
     """
 
-    xaction = models.ForeignKey('Xaction', verbose_name='Xaction')
+    xaction = models.ForeignKey(
+        'Xaction',
+        verbose_name='Xaction',
+        on_delete=models.CASCADE
+    )
     """
     Foreign key to Xaction model.
     """
 
-    field = models.ForeignKey('Field', verbose_name='Field')
+    field = models.ForeignKey(
+        'Field',
+        verbose_name='Field',
+        on_delete=models.CASCADE
+    )
     """
     Foreign key to Firld model.
     """
 
-    prev_val = models.ForeignKey('StorageBin', verbose_name='Previous Value',
-                                 related_name='prev_field_diff')
+    prev_val = models.ForeignKey(
+        'StorageBin',
+        verbose_name='Previous Value',
+        related_name='prev_field_diff',
+        on_delete=models.CASCADE
+    )
     """
     Foreign key to storage bin model for previous value.
     """
 
-    curr_val = models.ForeignKey('StorageBin', verbose_name='Current Value',
-                                 related_name='curr_field_diff')
+    curr_val = models.ForeignKey(
+        'StorageBin',
+        verbose_name='Current Value',
+        related_name='curr_field_diff',
+        on_delete=models.CASCADE
+    )
     """
     Foreign key to storage bin model for current value.
     """
 
     class Meta:
-        db_table = 'fielddiff'
+        db_table = 'field_diff'
         verbose_name_plural = _('Field Diffs')
         verbose_name = _('Field Diff')
 

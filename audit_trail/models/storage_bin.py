@@ -35,7 +35,11 @@ class StorageBin(models.Model):
     which should be used to search for this record, wherever applicable.
     """
 
-    content_type = models.ForeignKey('ContentType', verbose_name='Content Type')
+    content_type = models.ForeignKey(
+        'ContentType',
+        verbose_name='Content Type',
+        on_delete=models.CASCADE
+    )
     """
     Boolean field of the Field showing whether field is collection or not.
     """

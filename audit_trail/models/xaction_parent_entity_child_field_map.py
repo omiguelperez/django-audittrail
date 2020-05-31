@@ -10,12 +10,19 @@ class XactionParentEntityChildFieldMap(models.Model):
     Mapping table for xaction and parent Entity to Child Field.
     """
 
-    xaction = models.ForeignKey('Xaction', related_name='xaction_parent_entity_child_fields')
+    xaction = models.ForeignKey(
+        'Xaction',
+        related_name='xaction_parent_entity_child_fields',
+        on_delete=models.CASCADE
+    )
     """
     Foreign key to xaction model.
     """
 
-    parent_entity_child_fields = models.ForeignKey('ParentEntityChildFieldMap')
+    parent_entity_child_fields = models.ForeignKey(
+        'ParentEntityChildFieldMap',
+        on_delete=models.CASCADE
+    )
     """
     Foreign key to parent entity child field mapping table.
     """

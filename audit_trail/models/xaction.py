@@ -21,8 +21,12 @@ class Xaction(models.Model):
     Id field of xaction, it is auto increment.
     """
 
-    entity = models.ForeignKey('Entity', verbose_name='Entity',
-                               related_name='xactions')
+    entity = models.ForeignKey(
+        'Entity',
+        verbose_name='Entity',
+        related_name='xactions',
+        on_delete=models.CASCADE
+    )
     """
     Foreign key to entity.
     """
@@ -47,12 +51,16 @@ class Xaction(models.Model):
     """
 
     ts = models.DateTimeField(_('Time Stamp'), null=False, blank=False,
-                                      auto_now_add=True)
+                              auto_now_add=True)
     """
     Time stamp when this transaction is happen.
     """
 
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name='User')
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        verbose_name='User',
+        on_delete=models.CASCADE
+    )
     """
     Foreign key to the user model.
     """
@@ -61,5 +69,15 @@ class Xaction(models.Model):
         db_table = 'xaction'
         verbose_name_plural = _('Xactions')
         verbose_name = _('Xaction')
-        ordering =['-ts']
+        ordering = ['-ts']
 
+    def __str__(self):
+        """Returns friendly description."""
+        msg = '{xaction_type} {entity} {key} at {ts} by {user}'.format(
+            xaction_type = self.xaction_type,
+            entity=self.display_text,
+            key=self.pfield_val,
+            ts=self.ts,
+            user=self.user
+        )
+        return msg

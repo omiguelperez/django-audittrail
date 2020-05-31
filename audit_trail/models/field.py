@@ -18,8 +18,12 @@ class Field(models.Model):
     Name of the field.
     """
 
-    entity = models.ForeignKey('Entity', verbose_name='Entity',
-                               related_name='fields')
+    entity = models.ForeignKey(
+        'Entity',
+        verbose_name='Entity',
+        related_name='fields',
+        on_delete=models.CASCADE
+    )
     """
     Foreign key to entity.
     """

@@ -13,7 +13,7 @@ class Entity(models.Model):
     Entity model for the History.
     """
 
-    entity_name = models.CharField(_('Email Address'), max_length=64, null=False,
+    entity_name = models.CharField(_('Entity Name'), max_length=64, null=False,
                                    blank=False, unique=True)
     """
     Name of the entity.
@@ -43,4 +43,8 @@ class Entity(models.Model):
         db_table = 'entity'
         verbose_name_plural = _('Entities')
         verbose_name = _('Entity')
+
+    def __str__(self):
+        """Returns entity name."""
+        return self.entity_name
 
